@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { TableContainer, Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
-import { useAchievements } from "../stores/achievement/hooks";
+import { useAchievements } from "../../stores/achievement/hooks";
 
 const AchievementPage: NextPage = () => {
 
