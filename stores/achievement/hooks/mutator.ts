@@ -1,39 +1,24 @@
-import { useSetRecoilState } from "recoil"
-import { achievementState } from "../states"
+import { useSetRecoilState } from "recoil";
+import { achievementState } from "../atom";
 
 export const useAchievementMutators = () => {
 
-    const setAchievement = useSetRecoilState(achievementState);
+    const setAchievements = useSetRecoilState(achievementState);
 
-    const updateAchievement = (isCorrect: boolean) => {
-        setAchievement(prevAchievement => {
-
-            let counts = {
-                correctCount: prevAchievement.correctCount,
-                consecutiveCorrectCount: 0,
-                maxConsecutiveCorrectCount: prevAchievement.maxConsecutiveCorrectCount
-            }
-
-            if (isCorrect) {
-                counts = {
-                    correctCount: prevAchievement.correctCount + 1,
-                    consecutiveCorrectCount: prevAchievement.consecutiveCorrectCount + 1,
-                    maxConsecutiveCorrectCount: 
-                        prevAchievement.maxConsecutiveCorrectCount < prevAchievement.consecutiveCorrectCount + 1 ?
-                        prevAchievement.consecutiveCorrectCount + 1 :
-                        prevAchievement.maxConsecutiveCorrectCount
+    const addAchievement = (progression: string, isCorrect: boolean) => {
+        setAchievements(prevAchievements => {
+            return {
+                ...prevAchievements,
+                [Object.keys(prevAchievements).length + 1]: {
+                    progression,
+                    isCorrect
                 }
             }
-
-            return {
-                ...counts,
-                playCount: prevAchievement.playCount + 1,
-            }
-        })
+        });
     }
 
     return {
-        updateAchievement
+        addAchievement
     }
 
 }

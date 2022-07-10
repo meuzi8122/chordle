@@ -1,6 +1,6 @@
 import { Center, Text } from "@chakra-ui/react";
 
-const Tile: React.FC<{chord: string, bg: Color}> = ({ chord, bg }) => {
+const AnswerTile: React.FC<TileProps> = ({ chord, bg }) => {
     return (
         <Center p={5} w={20} borderWidth="1px" borderRadius="lg" bg={bg} >
             <Text>{chord}</Text>
@@ -8,4 +8,4 @@ const Tile: React.FC<{chord: string, bg: Color}> = ({ chord, bg }) => {
     )
 }
 
-export default Tile;
+export default AnswerTile;

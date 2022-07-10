@@ -10,16 +10,9 @@ type IndexPageProps = {
     progressions: Progression[];
 }
 
-/* 共通コンポーネント関連 */
+/* その他コンポーネント関連 */
 
-type InputProps = {
-    /* プレイスホルダは文字列のみ */
-    placeholder: string;
-    type?: "text" | "number";
-    register: import("react-hook-form").UseFormRegisterReturn;
-}
-
-type SubmitButtonProps = {
-    label: string;
-    disabled: boolean;
+type TileProps = {
+    chord: string;
+    bg: Color;
 }

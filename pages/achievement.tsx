@@ -1,19 +1,30 @@
 import { NextPage } from "next";
-import { useAchievement } from "../stores/achievement/hooks";
+import { TableContainer, Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
+import { useAchievements } from "../stores/achievement/hooks";
 
 const AchievementPage: NextPage = () => {
 
-    const achievement = useAchievement();
+    const achievements = useAchievements();
 
     return (
-        <div className="container">
-            <div className="box">
-                {achievement.playCount}
-                {achievement.correctCount}
-                {achievement.consecutiveCorrectCount}
-                {achievement.maxConsecutiveCorrectCount}
-            </div>
-        </div>
+        <TableContainer>
+            <Table>
+                <Thead>
+                    <Tr>
+                        <Th>コード進行</Th>
+                        <Th>正否</Th>
+                    </Tr>
+                </Thead>
+                <Tbody>
+                    {Object.values(achievements).map(achievement => 
+                        <Tr>
+                            <Td>{achievement.progression}</Td>
+                            <Td>{achievement.isCorrect}</Td>
+                        </Tr>    
+                    )}
+                </Tbody>
+            </Table>
+        </TableContainer>
     )
 
 }

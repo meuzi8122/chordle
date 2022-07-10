@@ -16,8 +16,6 @@ type LogElement = {
 type Color = "#6aa64" | "#c9b458" | "#787c7e" | "";
 
 type Achievement = {
-    playCount: number;
-    correctCount: number;
-    consecutiveCorrectCount: number;
-    maxConsecutiveCorrectCount: number;
+    progression: string;
+    isCorrect: boolean;
 }

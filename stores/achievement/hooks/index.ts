@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
-import { achievementState } from "../states";
+import { achievementState } from "../atom";
 
-export const useAchievement = () => {
+export const useAchievements = () => {
     return useRecoilValue(achievementState);
 }
