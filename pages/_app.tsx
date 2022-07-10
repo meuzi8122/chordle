@@ -1,14 +1,11 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { ChakraProvider } from "@chakra-ui/react";
 import { RecoilRoot } from "recoil";
-import { AnimatePresence } from "framer-motion";
 import Layout from "../layouts";
 import { APP_NAME } from "../constants";
-import "../styles/globals.css";
-import "bulma/css/bulma.css";
-import "remixicon/fonts/remixicon.css";
 
-const App = ({ Component, pageProps, router }: AppProps) => {
+const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
@@ -16,13 +13,13 @@ const App = ({ Component, pageProps, router }: AppProps) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{APP_NAME}</title>
       </Head>
-      <RecoilRoot>
-        <AnimatePresence exitBeforeEnter>
+      <ChakraProvider resetCSS={true}>
+        <RecoilRoot>
           <Layout>
-            <Component key={router.asPath} {...pageProps} />
+            <Component {...pageProps} />
           </Layout>
-        </AnimatePresence>
-      </RecoilRoot>
+        </RecoilRoot>
+      </ChakraProvider>
     </>
   );
 }

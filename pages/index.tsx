@@ -8,7 +8,11 @@ import ProgressionTile from "../unique/progression";
 import { useLogs } from "../hooks/log";
 import { useQuizTime } from "../hooks/time";
 import { useThemeProgression } from "../hooks/progression";
-import { ANSWER_LIMIT } from "../constants";
+import { ANSWER_LIMIT } from "../constants/quiz";
+import { Box, Center, Container, VStack, Text } from "@chakra-ui/react";
+import Tile from "../components/quiz/tile";
+import Board from "../components/quiz/board";
+import React from "react";
 
 const IndexPage: NextPage<IndexPageProps> = ({ progressions }) => {
 
@@ -29,35 +33,44 @@ const IndexPage: NextPage<IndexPageProps> = ({ progressions }) => {
     const { updateAchievement } = useAchievementMutators();
 
     return (
-        <div className="section"> {/*className="container">*/}
+        <VStack>
+            <VStack>
+                {Object.values(logs).map((log, index) => 
+                    <React.Fragment key={index}>
+                        <Board log={log} />
+                    </React.Fragment>
+                )}
+            </VStack>
+        </VStack>
+        // {/*className="container">*/}
 
-            <>
-                {/* <ProgressionTile fisrt={answers[1][0]} />
-                <ProgressionTile fisrt={answers[2][0]}/>
-                <ProgressionTile fisrt={answers[3][0]}/>
-                <ProgressionTile fisrt={answers[4][0]}/>
-                <ProgressionTile fisrt={answers[5][0]}/> */}
-            </>
-            <div className="level">
+        //     <>
+        //         {/* <ProgressionTile fisrt={answers[1][0]} />
+        //         <ProgressionTile fisrt={answers[2][0]}/>
+        //         <ProgressionTile fisrt={answers[3][0]}/>
+        //         <ProgressionTile fisrt={answers[4][0]}/>
+        //         <ProgressionTile fisrt={answers[5][0]}/> */}
+        //     </>
+        //     <div className="level">
             
-            </div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                {/* 3か4までは必須にする? */}
-                <div className="field is-grouped">
-                    <Input placeholder="1番目のコード" register={register("first", {required: "1番目のコードが入力されていません"})} />
-                    <Input placeholder="2番目のコード" register={register("second", {required: "2番目のコードが入力されていません"})} />
-                    <Input placeholder="3番目のコード" register={register("third", {required: "3番目のコードが入力されていません"})} />
-                    <Input placeholder="4番目のコード" register={register("fourth")} />
-                </div>
-                <div className="field is-grouped">
-                    <Input placeholder="5番目のコード" register={register("fifth")} />
-                    <Input placeholder="6番目のコード" register={register("sixth")} />
-                    <Input placeholder="7番目のコード" register={register("seventh")} />
-                    <Input placeholder="8番目のコード" register={register("eighth")} />
-                    <SubmitButton label="回答" disabled={!(themeProgression && quizTime <= ANSWER_LIMIT)} />
-                </div>
-            </form>
-            </div>
+        //     </div>
+        //     <form onSubmit={handleSubmit(onSubmit)}>
+        //         {/* 3か4までは必須にする? */}
+        //         <div className="field is-grouped">
+        //             <Input placeholder="1番目のコード" register={register("first", {required: "1番目のコードが入力されていません"})} />
+        //             <Input placeholder="2番目のコード" register={register("second", {required: "2番目のコードが入力されていません"})} />
+        //             <Input placeholder="3番目のコード" register={register("third", {required: "3番目のコードが入力されていません"})} />
+        //             <Input placeholder="4番目のコード" register={register("fourth")} />
+        //         </div>
+        //         <div className="field is-grouped">
+        //             <Input placeholder="5番目のコード" register={register("fifth")} />
+        //             <Input placeholder="6番目のコード" register={register("sixth")} />
+        //             <Input placeholder="7番目のコード" register={register("seventh")} />
+        //             <Input placeholder="8番目のコード" register={register("eighth")} />
+        //             <SubmitButton label="回答" disabled={!(themeProgression && quizTime <= ANSWER_LIMIT)} />
+        //         </div>
+        //     </form>
+
     )
 
 }

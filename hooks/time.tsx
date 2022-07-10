@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ANSWER_LIMIT } from "../constants";
+import { ANSWER_LIMIT } from "../constants/quiz";
 
 export const useQuizTime = () => {
 
